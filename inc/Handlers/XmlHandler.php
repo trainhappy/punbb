@@ -9,14 +9,16 @@
 
 
 // Make sure no one attempts to run this script "directly"
-if (!defined('FORUM'))
+if (!defined('IN_PUNBB'))
 	exit;
 
+class XmlHandler
+{
 
 //
 // Parse XML data into an array
 //
-function xml_to_array($raw_xml)
+public function xml_to_array($raw_xml)
 {
 	$xml_parser = xml_parser_create();
 	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, 0);
@@ -134,7 +136,7 @@ function xml_to_array($raw_xml)
 //
 // Validate the syntax of an extension manifest file
 //
-function validate_manifest($xml_array, $folder_name)
+public function validate_manifest($xml_array, $folder_name)
 {
 	global $lang_admin_ext, $forum_config;
 
@@ -215,3 +217,5 @@ function validate_manifest($xml_array, $folder_name)
 }
 
 define('FORUM_XML_FUNCTIONS_LOADED', 1);
+
+}
